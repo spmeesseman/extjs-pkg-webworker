@@ -34,8 +34,8 @@
 		}
 	},
 	"files": [
-		"**/*.js",
-		"build.xml"
+		"build.xml",
+		"src"
 	],
 	"sencha": {
 		"name": "webworker",
