@@ -1,5 +1,5 @@
 {
-	"name": "extjs-pkg-webworker",
+	"name": "@spmeesseman/extjs-pkg-webworker",
 	"displayName": "ExtJS Package Wrapper for WebWorker",
 	"description": "ExtJS Package Wrapper for WebWorker",
 	"publisher": "spmeesseman",
