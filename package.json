@@ -3,7 +3,7 @@
 	"displayName": "ExtJS Package Wrapper for WebWorker",
 	"description": "ExtJS Package Wrapper for WebWorker",
 	"publisher": "spmeesseman",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"devDependencies": {
 		"@semantic-release/changelog": "^3.0.2",

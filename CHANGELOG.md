@@ -1,5 +1,23 @@
 # Change Log
 
+## [1.0.1](https://github.com/spmeesseman/extjs-pkg-webworker/compare/v1.0.0...v1.0.1) (2019-05-01)
+
+
+### Build System
+
+* **npm:** update security vulnerablities.  manual changes needed for tar vulnerability. ([e5a36be](https://github.com/spmeesseman/extjs-pkg-webworker/commit/e5a36be))
+
+
+### Code Refactoring
+
+* scoped package ([139ac3a](https://github.com/spmeesseman/extjs-pkg-webworker/commit/139ac3a))
+
+
+### Documentation
+
+* **readme:** update build by me section ([d52db2c](https://github.com/spmeesseman/extjs-pkg-webworker/commit/d52db2c))
+* **readme:** update builds list [skip ci] ([f512b10](https://github.com/spmeesseman/extjs-pkg-webworker/commit/f512b10))
+
 # 1.0.0 (2019-04-19)
 
 
