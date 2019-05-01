@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.2](https://github.com/spmeesseman/extjs-pkg-webworker/compare/v1.0.1...v1.0.2) (2019-05-01)
+
+
+### Code Refactoring
+
+* make package public ([7690bb8](https://github.com/spmeesseman/extjs-pkg-webworker/commit/7690bb8))
+
 ## [1.0.1](https://github.com/spmeesseman/extjs-pkg-webworker/compare/v1.0.0...v1.0.1) (2019-05-01)
 
 
