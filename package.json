@@ -2,7 +2,7 @@
 	"name": "@spmeesseman/extjs-pkg-webworker",
 	"displayName": "ExtJS Package Wrapper for WebWorker",
 	"description": "ExtJS Package Wrapper for WebWorker",
-	"publisher": "spmeesseman",
+	"author": "spmeesseman",
 	"version": "1.0.2",
 	"license": "MIT",
 	"devDependencies": {
