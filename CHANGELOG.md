@@ -1,4 +1,8 @@
-# Change Log
+# EXTJS-PKG-WEBWORKER CHANGE LOG
+
+## Version 1.0.3 (May 29th, 2019)
+
+* Initial app-publisher release
 
 ## [1.0.2](https://github.com/spmeesseman/extjs-pkg-webworker/compare/v1.0.1...v1.0.2) (2019-05-01)
 
@@ -37,3 +41,4 @@
 
 * **readme:** add Greenkeeper badge ([d371ef8](https://github.com/spmeesseman/extjs-pkg-webworker/commit/d371ef8))
 * **readme:** initial ([cc83592](https://github.com/spmeesseman/extjs-pkg-webworker/commit/cc83592))
+
