@@ -74,7 +74,7 @@
  *     });
  */
 
-Ext.define ('Ext.ux.WebWorker', 
+Ext.define('Ext.ux.WebWorker', 
 {
 	alias: 'webworker' ,
 	
@@ -89,34 +89,33 @@ Ext.define ('Ext.ux.WebWorker',
 	},
 	
 
-	updateBlob: function(v)
-	{console.log('here22');
+	resetBlob: function(v)
+	{
 		var me = this;
-		if (!Ext.isEmpty(me.getBlob()))
-		{console.log('here3');
-			var winURL = window.URL || window.webkitURL ,				
-				blob = new Blob ([me.getBlob()], {type: 'text/plain'}) ,
-				inlineFile = winURL.createObjectURL(blob);
-			me.stop();console.log('here4');
-			Ext.merge(me.initialConfig, { blob: v });console.log('here5');
-			me.init(me.initialConfig);
+		me.stop();
+		me.setBlob(v);
+		me.init({ blob: v });
+	},
+
+
+	constructor: function(cfg) 
+	{
+		this.init(cfg, true);
+	},
+
+
+	init: function(cfg, construct) 
+	{
+		var me = this;
+
+		if (construct) {
+			me.initConfig(cfg);
+			me.id = Ext.id();
 		}
-		return v;
-	},
-
-
-	constructor: function (cfg) 
-	{
-		this.init(cfg);
-	},
-
-
-	init: function(cfg) 
-	{
-		var me = this;
-		console.log(cfg);
-		me.initConfig (cfg);
-		me.mixins.observable.constructor.call (me, cfg);
+		else {
+			me.initConfig(Ext.merge(me.initialConfig, cfg));
+		}
+		me.mixins.observable.constructor.call(me, cfg);
 		/*
 		me.addEvents (
 			'error' ,
@@ -125,9 +124,10 @@ Ext.define ('Ext.ux.WebWorker',
 		*/
 		try {
 			// Makes inline worker
-			if (Ext.isEmpty(me.getFile())) {
+			if (Ext.isEmpty(me.getFile())) 
+			{
 				var winURL = window.URL || window.webkitURL ,				
-					blob = new Blob ([me.getBlob()], {type: 'text/plain'}) ,
+					blob = new Blob([me.getBlob()], { type: 'text/plain' }) ,
 					inlineFile = winURL.createObjectURL(blob);
 				
 				me.worker = new Worker(inlineFile);
@@ -137,12 +137,10 @@ Ext.define ('Ext.ux.WebWorker',
 				me.worker = new Worker(me.getFile());
 			}
 			
-			me.id = Ext.id ();
-			
-			me.worker.onmessage = function (message) {
+			me.worker.onmessage = function(message) 
+			{
 				// Message event is always sent
-				me.fireEvent ('message', me, message.data);
-				
+				me.fireEvent('message', me, message.data);
 				/*
 					message.data : object
 					msg.event : event to raise
@@ -151,12 +149,12 @@ Ext.define ('Ext.ux.WebWorker',
 				if (Ext.isObject(message.data)) me.fireEvent(message.data.event, me, message.data.data);
 			};
 			
-			me.worker.onerror = function (message) {
-				me.fireEvent ('error', me, message);
+			me.worker.onerror = function(message) {
+				me.fireEvent('error', me, message);
 			};
 		}
-		catch (err) {
-			Ext.Error.raise (err);
+		catch(err) {
+			Ext.Error.raise(err);
 
 			return null;
 		}
@@ -165,7 +163,7 @@ Ext.define ('Ext.ux.WebWorker',
 	},
 	
 	
-	send: function (events, data) 
+	send: function(events, data) 
 	{
 		var me = this;
 		
@@ -175,20 +173,20 @@ Ext.define ('Ext.ux.WebWorker',
 
 		// Treats it as a normal message
 		if (arguments.length === 1) {
-			if (Ext.isString (events)) me.worker.postMessage (events);
-			else Ext.Error.raise ('String expected!');
+			if (Ext.isString(events)) me.worker.postMessage(events);
+			else Ext.Error.raise('String expected!');
 		}
 		// Treats it as an event-driven message
 		else if (arguments.length >= 2) {
-			if (Ext.isString (events)) events = [events];
+			if (Ext.isString(events)) events = [events];
 			
-			Ext.each (events, function (event) {
+			Ext.each(events, function (event) {
 				var msg = {
 					event: event ,
 					data: data
 				};
 				
-				me.worker.postMessage (msg);
+				me.worker.postMessage(msg);
 			});
 		}
 	},
