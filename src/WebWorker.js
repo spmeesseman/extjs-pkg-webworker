@@ -88,10 +88,33 @@ Ext.define ('Ext.ux.WebWorker',
 		itemId: ''
 	},
 	
+
+	updateBlob: function(v)
+	{console.log('here22');
+		var me = this;
+		if (!Ext.isEmpty(me.getBlob()))
+		{console.log('here3');
+			var winURL = window.URL || window.webkitURL ,				
+				blob = new Blob ([me.getBlob()], {type: 'text/plain'}) ,
+				inlineFile = winURL.createObjectURL(blob);
+			me.stop();console.log('here4');
+			Ext.merge(me.initialConfig, { blob: v });console.log('here5');
+			me.init(me.initialConfig);
+		}
+		return v;
+	},
+
+
 	constructor: function (cfg) 
 	{
+		this.init(cfg);
+	},
+
+
+	init: function(cfg) 
+	{
 		var me = this;
-		
+		console.log(cfg);
 		me.initConfig (cfg);
 		me.mixins.observable.constructor.call (me, cfg);
 		/*
@@ -102,16 +125,16 @@ Ext.define ('Ext.ux.WebWorker',
 		*/
 		try {
 			// Makes inline worker
-			if (Ext.isEmpty (me.getFile ())) {
+			if (Ext.isEmpty(me.getFile())) {
 				var winURL = window.URL || window.webkitURL ,				
-					blob = new Blob ([me.getBlob ()], {type: 'text/plain'}) ,
-					inlineFile = winURL.createObjectURL (blob);
+					blob = new Blob ([me.getBlob()], {type: 'text/plain'}) ,
+					inlineFile = winURL.createObjectURL(blob);
 				
-				me.worker = new Worker (inlineFile);
+				me.worker = new Worker(inlineFile);
 			}
 			// Uses file
 			else {
-				me.worker = new Worker (me.getFile ());
+				me.worker = new Worker(me.getFile());
 			}
 			
 			me.id = Ext.id ();
@@ -125,7 +148,7 @@ Ext.define ('Ext.ux.WebWorker',
 					msg.event : event to raise
 					msg.data : data to handle
 				*/
-				if (Ext.isObject (message.data)) me.fireEvent (message.data.event, me, message.data.data);
+				if (Ext.isObject(message.data)) me.fireEvent(message.data.event, me, message.data.data);
 			};
 			
 			me.worker.onerror = function (message) {
@@ -134,7 +157,7 @@ Ext.define ('Ext.ux.WebWorker',
 		}
 		catch (err) {
 			Ext.Error.raise (err);
-			
+
 			return null;
 		}
 		
@@ -146,6 +169,10 @@ Ext.define ('Ext.ux.WebWorker',
 	{
 		var me = this;
 		
+		if (!me.worker) {
+			return;
+		}
+
 		// Treats it as a normal message
 		if (arguments.length === 1) {
 			if (Ext.isString (events)) me.worker.postMessage (events);
@@ -169,7 +196,9 @@ Ext.define ('Ext.ux.WebWorker',
 	
 	stop: function () 
 	{
-		this.worker.terminate();
+		if (this.worker) {
+			this.worker.terminate();
+		}
 	}
 	
 });
