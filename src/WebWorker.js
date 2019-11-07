@@ -100,7 +100,7 @@ Ext.define('Ext.ux.WebWorker',
 
 	constructor: function(cfg) 
 	{
-		this.init(cfg, true);
+		return this.init(cfg, true);
 	},
 
 
