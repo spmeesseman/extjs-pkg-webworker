@@ -1,6 +1,6 @@
 {
     "name": "@perryjohnson/extjs-pkg-webworker",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "displayName": "ExtJS Package Wrapper for WebWorker",
     "description": "ExtJS Package Wrapper for WebWorker",
     "license": "MIT",
@@ -17,13 +17,7 @@
         "type": "svn",
         "url": "https://svn.development.pjats.com/repos/pja/extjs-pkg-websocket/trunk"
     },
-    "devDependencies": {
-        "@perryjohnson/app-publisher": "^1.4.5"
-    },
-    "scripts": {
-        "app-publish": "app-publisher -p ps",
-        "app-publish-dry": "app-publisher -p ps --dry-run"
-    },
+    "devDependencies": {},
     "keywords": [
         "sencha extjs",
         "webworker",

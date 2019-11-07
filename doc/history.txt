@@ -23,3 +23,40 @@ May 29th, 2019
 
 1.  Initial Release.
 
+
+Version 1.1.0
+November 7th, 2019
+-------------------------------------------------------------------------------
+********************************************************************************
+***                                                                            *
+*** Verify that the following requirements have been satisfied:                *
+***                                                                            *
+*** Requirements:                                                              *
+*** -------------                                                              *
+***                                                                            *
+***    1.  Operating System            : Windows 7+                            * 
+***                                                                            *
+***    2.  CPU                         : 1.0+ GHz                              *
+***                                                                            *
+***    3.  RAM                         : 128 MB                                *
+***                                                                            *
+***    4.  ExtJS Core                  : 6.7+                                  *
+***                                                                            *
+********************************************************************************
+
+1.  Feature
+
+    Add support to update the url blob of the internal webworker.
+    
+    A new function has been added:
+    
+        resetBlob(string)
+    
+    This can be used to reset the blob url of the internal webworker from within
+    the callback function, for example to change the elapsed timeout of a thread
+    used for a timer.
+
+2.  Build System:  App-Publisher
+
+    Update .publishrc to 1.13 config.
+
